@@ -2,15 +2,16 @@ package com.example.taskmanager.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Data
 @Builder
 @NoArgsConstructor
@@ -18,48 +19,35 @@ import java.util.UUID;
 @AllArgsConstructor
 public class User implements UserDetails {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "user_id")
-        private Long userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Long userId;
 
-        @Column(unique = true)
-        private String username;
+    @Column(unique = true)
+    private String username;
 
-        @Column(unique = true)
-        private String email;
+    @Column(unique = true)
+    private String email;
 
-        @Column(columnDefinition = "text")
-        private String password;
+    @Column(columnDefinition = "text")
+    private String password;
 
-        @Temporal(TemporalType.TIMESTAMP)
-        @Column(name = "created_at", nullable = false, updatable = false)
-        private Date createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Date createdAt;
 
-        @Temporal(TemporalType.TIMESTAMP)
-        @Column(name = "updated_at", nullable = false)
-        private Date updatedAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
 
-
-
-
-        // Constructors, getters, setters, and other methods
+    private Date updatedAt;
 
 
+    // Constructors, getters, setters, and other methods
 
-
-
-
-
-
-
-
-
-
-
-
-
-    public User getUser(){
+    public User getUser() {
 
 
         return this;

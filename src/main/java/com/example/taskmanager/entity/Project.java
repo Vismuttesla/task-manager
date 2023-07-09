@@ -35,6 +35,7 @@ public class Project {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @CreatedBy
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Temporal(TemporalType.TIMESTAMP)
