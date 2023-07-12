@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -17,12 +19,14 @@ public class ProjectDto {
 
     private String projectName;
     private String description;
-
+    private String creater;
+    private Date createdAt;
     public static ProjectDto fromProject(Project project) {
 
-      return new ProjectDtoBuilder().projectName(project.getProjectName())
-              .description(project.getDescription()).build();
-
+      return new ProjectDtoBuilder().projectName(project.getProjectName()).
+              description(project.getDescription()).
+              creater(project.getUser().getUsername()).
+              build();
     }
 
 

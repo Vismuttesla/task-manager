@@ -28,7 +28,8 @@ public class Project {
     @Column(name = "project_id")
     private Long projectId;
 
-    @Column(name = "project_name")
+    @Column(name = "project_name",unique = true)
+
     private String projectName;
 
     private String description;

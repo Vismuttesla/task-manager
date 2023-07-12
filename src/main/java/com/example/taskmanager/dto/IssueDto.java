@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.usertype.StaticUserTypeSupport;
+
+
+import java.util.Date;
 
 @Data
 @Builder
@@ -14,26 +16,32 @@ import org.hibernate.usertype.StaticUserTypeSupport;
 
 public class IssueDto {
 
-    private Long projectId;
-    private User reporter;
-    private User assignee;
+    private String  projectName;
+    private String assignee;
+    private String repoter;
+
     private String title;
     private String description;
 
-    private Type issueType;
-    private Status status;
-
+    private String issueTypeName;
+    private String statusName;
+   private Date createdAt;
+   private Date updatedAt;
 
     public static IssueDto fromIssue(Issue issue){
-        IssueDto issueDto=new
-                IssueDtoBuilder().projectId(issue.getProject().getProjectId())
-                .reporter(issue.getReporter())
-                .assignee(issue.getAssignee()).title(issue.getTitle()).
-        issueType(issue.getIssueType())
-                .status(issue.getStatus())
-        .description(issue.getDescription()).build();
+        return new
+                IssueDtoBuilder().projectName(issue.getProject().getProjectName()).
+                assignee(issue.getAssignee().getUsername()).
+                title(issue.getTitle()).
+                repoter(issue.getReporter().getUser().getUsername()).
+        issueTypeName(issue.getIssueType().toString())
+                .statusName(issue.getStatus().toString())
+        .description(issue.getDescription()).
+                createdAt(issue.getCreatedAt()).
+                updatedAt(issue.getUpdateAt()).
+                build();
 
-        return issueDto;
+
     }
 
 
