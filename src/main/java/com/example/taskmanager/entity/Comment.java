@@ -2,7 +2,9 @@ package com.example.taskmanager.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
 
@@ -31,8 +33,12 @@ public class Comment {
     @JoinColumn(name="issue_id")
     private Issue issue;
 
+
+
+
     @ManyToOne
     @JoinColumn(name="user_id")
+    @CreatedBy
     private User user;
 
     @Column(name="comment_body")
@@ -42,6 +48,11 @@ public class Comment {
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    @Column(name = "updated_at", nullable = false, updatable = false)
+    private Date updatedAt;
 
 
 

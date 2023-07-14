@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "projects")
@@ -38,6 +39,12 @@ public class Project {
     @CreatedBy
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private List<Issue> issues;
+
+
+
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate

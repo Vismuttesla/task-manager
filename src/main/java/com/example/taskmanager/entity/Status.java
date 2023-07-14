@@ -1,5 +1,19 @@
 package com.example.taskmanager.entity;
 
-public enum Status {
-    Open,In_Progress,Resolved,Closed;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.*;
+
+@Entity
+@Table(name = "status")
+@Data
+@Builder
+@NoArgsConstructor
+@ToString
+@AllArgsConstructor
+
+public  class Status {
+    private Long statusId;
+    private String statusName;
+
 }

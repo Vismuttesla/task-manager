@@ -9,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "issues")
@@ -48,6 +49,11 @@ public class Issue
     @CreatedBy
     @JoinColumn(name = "reporter_id")
     private User reporter;
+// TODO think how to cascade  and add comment if  it needs
+
+    @OneToMany(mappedBy = "issue", cascade = CascadeType.ALL)
+    private List<Comment> comments;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assignee_id")
@@ -56,11 +62,15 @@ public class Issue
 
      private String title;
 
+
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Type issueType;
 
-    @Enumerated(EnumType.STRING)
+
+
+    @OneToOne
     @Column(nullable = false)
     private Status status;
 
@@ -81,6 +91,7 @@ public class Issue
 
     @Column(name = "due_date", nullable = false)
     private Date dueDate;
+
 
 
 
