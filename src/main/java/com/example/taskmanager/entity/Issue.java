@@ -52,6 +52,7 @@ public class Issue
 // TODO think how to cascade  and add comment if  it needs
 
     @OneToMany(mappedBy = "issue", cascade = CascadeType.ALL)
+     //@JoinColumn
     private List<Comment> comments;
 
 
@@ -71,7 +72,7 @@ public class Issue
 
 
     @OneToOne
-    @Column(nullable = false)
+    @JoinColumn(nullable = false,name = "status_name",referencedColumnName = "statusName")
     private Status status;
 
 

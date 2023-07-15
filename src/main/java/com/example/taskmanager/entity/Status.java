@@ -1,7 +1,6 @@
 package com.example.taskmanager.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -13,7 +12,11 @@ import lombok.*;
 @AllArgsConstructor
 
 public  class Status {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "status_id")
     private Long statusId;
+
     private String statusName;
 
 }

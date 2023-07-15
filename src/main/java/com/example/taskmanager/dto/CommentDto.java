@@ -6,22 +6,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommentDto {
 
-  private Long issueId;
-  private Long userId;
+
+
   private String commentBody;
+  private String username;
+  private Date  createdAt;
+  private Date  updatedAt;
 
-  public static CommentDto fromComment(Comment comment){
 
-    return new CommentDtoBuilder().issueId(comment.getIssue().getIssueId())
-            .userId(comment.getUser().getUserId())
-            .commentBody(comment.getCommentBody()).build();
-
+  public static CommentDto fromComment(Comment comment)
+  {
+             return new CommentDtoBuilder()
+            .username(comment.getUser().getUsername()).
+            createdAt(comment.getCreatedAt()).
+            createdAt(comment.getUpdatedAt()).
+            commentBody(comment.getCommentBody()).build();
   }
 
 

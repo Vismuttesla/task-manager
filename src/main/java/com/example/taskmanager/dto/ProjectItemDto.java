@@ -17,8 +17,8 @@ public class ProjectItemDto {
 
     private Long projectId;
     private String projectName;
-    private String description;
-    private String createdBy;
+   // private String description;
+   // private String createdBy;
     private Date createdAt;
 
     public static ProjectItemDto fromProject(Project project) {
@@ -26,8 +26,7 @@ public class ProjectItemDto {
         return new ProjectItemDtoBuilder().
                 projectId(project.getProjectId()).
                 projectName(project.getProjectName()).
-                description(project.getDescription()).
-                createdBy(project.getUser().getUsername()).
+     //           description(project.getDescription()).
                 createdAt(project.getCreatedAt()).
                 build();
 
