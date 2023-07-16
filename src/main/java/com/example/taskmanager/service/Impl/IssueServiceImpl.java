@@ -19,10 +19,10 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class IssueServiceImpl implements IssueService {
-    private IssueRepository issueRepository;
-    private ProjectRepository projectRepository;
-    private UserRepository userRepository;
-    private StatusRepository statusRepository;
+    private final IssueRepository issueRepository;
+    private final ProjectRepository projectRepository;
+    private final UserRepository userRepository;
+    private final StatusRepository statusRepository;
 
     @Override
     public IssueDto add(IssueForm form) {
@@ -60,7 +60,7 @@ public class IssueServiceImpl implements IssueService {
 
     private Issue fillIssue(Issue issue, IssueForm form) {
         issue.builder().project(projectRepository.getReferenceById(form.getProjectId())).
-                assignee(userRepository.findUserByName((form.getAssigneeName()))).
+                assignee(userRepository.findUserByUserName((form.getAssigneeName()))).
                 title(form.getTitle()).
                 description(form.getDescription()).
                 issueType(form.getIssueType()).

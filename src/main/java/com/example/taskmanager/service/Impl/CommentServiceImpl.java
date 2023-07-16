@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
- private CommentRepository commentRepository;
-private IssueRepository issueRepository;
+ private final CommentRepository commentRepository;
+private final IssueRepository issueRepository;
     @Override
     public CommentDto add(CommentForm form) {
 

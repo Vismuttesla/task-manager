@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class UserDto {
-    private  String username;
+    private  String userName;
     private String email;
     private String password;
 
@@ -20,7 +20,7 @@ public class UserDto {
     {
 
 
-    return new UserDtoBuilder().username(user.getUsername())
+    return new UserDtoBuilder().userName(user.getUsername())
             .email(user.getEmail())
             .password(user.getPassword()).build();
     }

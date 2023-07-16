@@ -2,10 +2,13 @@ package com.example.taskmanager.service.Impl;
 
 import com.example.taskmanager.dto.UserDto;
 import com.example.taskmanager.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
 @Service
+@RequiredArgsConstructor
+
 public class UserServiceImpl implements UserService {
 
 

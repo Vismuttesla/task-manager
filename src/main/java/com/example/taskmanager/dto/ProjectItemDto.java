@@ -24,7 +24,7 @@ public class ProjectItemDto {
     public static ProjectItemDto fromProject(Project project) {
 
         return new ProjectItemDtoBuilder().
-                projectId(project.getProjectId()).
+                projectId(project.getId()).
                 projectName(project.getProjectName()).
      //           description(project.getDescription()).
                 createdAt(project.getCreatedAt()).

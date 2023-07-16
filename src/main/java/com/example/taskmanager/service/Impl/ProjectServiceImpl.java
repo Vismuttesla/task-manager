@@ -22,11 +22,10 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-
 public class ProjectServiceImpl implements ProjectService {
 
-   private UserRepository userRepository;
-   private ProjectRepository projectRepository;
+   private final UserRepository userRepository;
+   private final ProjectRepository projectRepository;
 
 
     @Override
@@ -53,7 +52,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         String email = auth.getName();
         User user = userRepository.findUserByEmail(email);
-       Long id= user.getUserId();
+       Long id= user.getId();
 
 
         return projectRepository.findAllByUserId(id)

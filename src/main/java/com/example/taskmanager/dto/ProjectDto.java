@@ -26,6 +26,7 @@ public class ProjectDto {
       return new ProjectDtoBuilder().projectName(project.getProjectName()).
               description(project.getDescription()).
               creater(project.getUser().getUsername()).
+              createdAt(project.getCreatedAt()).
               build();
     }
 

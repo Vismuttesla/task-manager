@@ -1,11 +1,13 @@
 package com.example.taskmanager.entity;
 
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,6 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Comment {
 
 //comment_id (Primary Key)
@@ -27,7 +30,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
-    private Long commentId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name="issue_id")
@@ -37,7 +40,7 @@ public class Comment {
 
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+   // @JoinColumn(name="user_id")
     @CreatedBy
     private User user;
 
@@ -46,12 +49,12 @@ public class Comment {
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at")
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
-    @Column(name = "updated_at", nullable = false, updatable = false)
+    @Column(name = "updated_at")
     private Date updatedAt;
 
 

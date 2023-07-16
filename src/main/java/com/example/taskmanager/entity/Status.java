@@ -1,7 +1,10 @@
 package com.example.taskmanager.entity;
 
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "status")
@@ -15,8 +18,8 @@ public  class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "status_id")
-    private Long statusId;
+    private Long id;
 
-    private String statusName;
+    private String name;
 
 }

@@ -1,13 +1,15 @@
 package com.example.taskmanager.entity;
 
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -18,28 +20,13 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Issue
 {
-
-    //issue_id (Primary key)
-    //project_id (Foreign key referencing project.project_id)
-    //reporter_id (Foreign key referencing user.user_id)
-    //assignee_id (Foreign key referencing user.user_id)
-    //title
-    //description
-    //status
-    //priority
-    //created_at
-    //updated_at
-    //due_date "
-
-    //issue_type
-    //summary
-    //description
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "issue_id")
-    private Long issueId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="project_id")
@@ -72,7 +59,7 @@ public class Issue
 
 
     @OneToOne
-    @JoinColumn(nullable = false,name = "status_name",referencedColumnName = "statusName")
+    @JoinColumn(nullable = false,name = "status_name",referencedColumnName = "name")
     private Status status;
 
 
@@ -82,15 +69,15 @@ public class Issue
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at")
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     private Date updateAt;
 
-    @Column(name = "due_date", nullable = false)
+    @Column(name = "due_date")
     private Date dueDate;
 
 

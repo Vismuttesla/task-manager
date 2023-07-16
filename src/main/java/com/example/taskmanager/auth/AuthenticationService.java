@@ -24,8 +24,10 @@ public class AuthenticationService {
 
         var user = User.builder()
                 .email(userDto.getEmail())
+                .userName(userDto.getUserName())
                 .password(passwordEncoder.encode(userDto.getPassword()))
                 .build();
+
         repository.save(user);
 
 

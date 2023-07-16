@@ -1,10 +1,12 @@
 package com.example.taskmanager.entity;
 
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Project {
 
 
@@ -27,7 +30,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
-    private Long projectId;
+    private Long id;
 
     @Column(name = "project_name",unique = true)
 
@@ -48,7 +51,7 @@ public class Project {
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at")
     private Date createdAt;
 
 

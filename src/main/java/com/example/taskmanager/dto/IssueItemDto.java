@@ -24,7 +24,7 @@ public class IssueItemDto {
     public static IssueItemDto fromIssue(Issue issue)
     {
         return new
-                IssueItemDtoBuilder().issueId(issue.getIssueId()).
+                IssueItemDtoBuilder().issueId(issue.getId()).
                 reporter(issue.getReporter().getUsername()).
                 assignee(issue.getAssignee().getUsername()).
                 title(issue.getTitle()).
